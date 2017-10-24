@@ -3,14 +3,13 @@
 #include "ESP8266HTTPClient.h"
 #include <Wire.h>
 #include "MAX30105.h"
-#include <string>
-#include <sstream>
+
 
 String deviceName = "CS244";
 MAX30105 ir_red_sensor;
 
 // WiFi settings
-const char *ssid = "congcongmao_guest";
+const char *ssid = "SSID HERE";
 
 void printMacAddress()
 {
@@ -26,7 +25,7 @@ void printMacAddress()
     Serial.print("Mac address : ");
     Serial.print(MAC_char);
 
-    WiFi.begin(ssid, "foreverbuckeye");
+    WiFi.begin(ssid, "PASSWORD HERE");
     while (WiFi.status() != WL_CONNECTED)
     {
         delay(500);
@@ -68,7 +67,7 @@ void loop()
     if (WiFi.status() == WL_CONNECTED) {
         WiFiClient client;
         const int httpPort = 80;
-        if (!client.connect("169.234.217.220", httpPort)) {
+        if (!client.connect("LOCAL IP HERE", httpPort)) {
             Serial.println("connection failed");
             return;
         }
@@ -84,14 +83,4 @@ void loop()
     } else {
         Serial.println("Error in WiFi connection");
     }
-    
-    // Serial.print(" R[");
-    // Serial.print(ir_red_sensor.getRed());
-    // Serial.print("] IR[");
-    // Serial.print(ir_red_sensor.getIR());
-    // Serial.print("] G[");
-    // Serial.print(ir_red_sensor.getGreen());
-    // Serial.print("]");
-  
-    // Serial.println();
 }
