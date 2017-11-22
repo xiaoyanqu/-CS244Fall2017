@@ -22,12 +22,11 @@ float beatsPerMinute;
 int beatAvg;
 
 // WiFi settings
-const char *ssid = "NETGEAR89";
-// const char *ssid = "UCInet Mobile Access";
+const char *ssid = "UCInet Mobile Access";
 
 void connectToWiFi()
 {
-    WiFi.begin(ssid, "yyyqqq2017");
+    WiFi.begin(ssid);
     while (WiFi.status() != WL_CONNECTED)
     {
         delay(500);
