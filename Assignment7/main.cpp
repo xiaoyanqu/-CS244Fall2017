@@ -47,12 +47,9 @@ void setup()
 
 void loop() {
     
-    // Post every 0.5 second
+    // Post every one second
     const int BATCH_SIZE = 50;
     
-    //How to determine buffer size: https://goo.gl/s14vUA
-    const int BUFFER_SIZE = JSON_OBJECT_SIZE(6) + 6 * JSON_ARRAY_SIZE(BATCH_SIZE);
-    //StaticJsonBuffer<BUFFER_SIZE> jsonBuffer;
     DynamicJsonBuffer jsonBuffer(4000);
     JsonObject& root = jsonBuffer.createObject();
     JsonArray& Time = root.createNestedArray("Time");
@@ -74,7 +71,6 @@ void loop() {
     // Serialize the object to a JSON string
     String jsonStr;
     root.printTo(jsonStr);
-    //Serial.println(jsonStr);
 
     HTTPClient http;
     http.begin("http://169.234.217.123/data.php");
